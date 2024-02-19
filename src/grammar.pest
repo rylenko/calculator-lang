@@ -1,0 +1,20 @@
+EOF = _{ EOI | "\n" }
+WHITESPACE = _{ " " | "\t" }
+Program = { SOI ~ Expression ~ EOF }
+
+Expression = { Term ~ (Operator ~ Term)* }
+BracketExpression = { UnaryMinus? ~ "(" ~ Expression ~ ")" }
+
+Term = { Float | BracketExpression }
+Float = @{
+	UnaryMinus?
+	~ (ASCII_NONZERO_DIGIT ~ ASCII_DIGIT+ | ASCII_DIGIT)
+	~ ("." ~ ASCII_DIGIT+)?
+}
+
+UnaryMinus = { "-" }
+Operator = _{ Add | Substract | Multiply | Divide }
+Add = { "+" }
+Substract = { "-" }
+Multiply = { "*" }
+Divide = { "/" }

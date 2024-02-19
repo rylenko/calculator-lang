@@ -1,0 +1,11 @@
+[package]
+name = "calculator-lang"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.72"
+inkwell = { version = "0.2.0", features = ["llvm12-0"] }
+lazy_static = "1.4.0"
+pest = "2.7.0"
+pest_derive = "2.7.0"
